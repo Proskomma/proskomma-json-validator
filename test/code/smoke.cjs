@@ -13,6 +13,7 @@ test(
             const validator = new ProskommaJsonValidator();
             t.throws(()=> validator.validate('banana', {}), 'Unknown');
             let validatorResult = validator.validate('perf', {});
+            console.log(validatorResult)
             t.notOk(validatorResult.isValid);
             t.equal(validatorResult.errors.length, 1);
             t.ok(validatorResult.errors[0].message.includes("docSets"));

@@ -1,7 +1,7 @@
 {
-  "name": "proskomma-render-perf",
-  "version": "0.0.5",
-  "description": "A Proskomma renderer to produce Proskomma Editor-Ready Format JSON (PERF)",
+  "name": "proskomma-json-validator",
+  "version": "0.0.1",
+  "description": "A JSON Schema Validator for Proskomma data",
   "main": "dist/index.js",
   "scripts": {
     "test": "bash -c \"babel-tape-runner test/code/*.cjs | node_modules/tap-summary/bin/cmd.js\"",
@@ -13,19 +13,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Proskomma/proskomma-render-perf.git"
+    "url": "git+https://github.com/mvahowe/proskomma-json-validator.git"
   },
   "author": "Mark Howe",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Proskomma/proskomma-render-perf/issues"
+    "url": "https://github.com/mvahowe/proskomma-json-validator/issues"
   },
-  "homepage": "https://github.com/Proskomma/proskomma-render-perf#readme",
+  "homepage": "https://github.com/mvahowe/proskomma-json-validator#readme",
   "dependencies": {
     "@babel/core": "^7.17.10",
-    "ajv": "^8.11.0",
-    "proskomma-render": "^0.6.0",
-    "proskomma-render-json": "0.0.5"
+    "ajv": "^8.11.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.10",
@@ -36,7 +34,6 @@
     "fs-extra": "^10.1.0",
     "path": "^0.12.7",
     "tap-summary": "^4.0.0",
-    "tape": "^5.5.3",
-    "uw-proskomma": "^0.7.0"
+    "tape": "^5.5.3"
   }
 }

@@ -122,6 +122,67 @@ export default ({
                 ],
             },
         },
+        document: {
+            type: "object",
+            properties: {
+                headers: {
+                    type: "object",
+                    propertyNames: {
+                        pattern: "^\\S+$",
+                    },
+                    additionalProperties: {
+                        type: "string",
+                    },
+                },
+                tags: {
+                    type: "array",
+                    items: {
+                        type: "string",
+                    },
+                },
+                sequences: {
+                    type: "object",
+                    propertyNames: {
+                        pattern: "^\\S+$",
+                    },
+                    additionalProperties: {
+                        "$ref": "#/$defs/sequence",
+                    },
+                },
+                mainSequence: {type: "string"},
+            },
+            required: ["headers", "tags", "sequences", "mainSequence"],
+        },
+        docSet: {
+            type: "object",
+            properties: {
+                selectors: {
+                    type: "object",
+                    minProperties: 1,
+                    maxProperties: 6,
+                    propertyNames: {
+                        pattern: "^\\S+$",
+                    },
+                    additionalProperties: {
+                        type: "string",
+                    },
+                },
+                tags: {
+                    type: "array",
+                    items: {
+                        type: "string",
+                    }
+                },
+                documents: {
+                    type: "object",
+                    propertyNames: {
+                        pattern: "^[A-Z0-9]{3}$",
+                    },
+                    additionalProperties: {"$ref": "#/$defs/document"},
+                }
+            },
+            required: ["selectors", "tags", "documents"],
+        },
     },
     type: "object",
     properties: {
@@ -130,66 +191,7 @@ export default ({
             propertyNames: {
                 pattern: "^\\S+$",
             },
-            additionalProperties: {
-                type: "object",
-                properties: {
-                    selectors: {
-                        type: "object",
-                        minProperties: 1,
-                        maxProperties: 6,
-                        propertyNames: {
-                            pattern: "^\\S+$",
-                        },
-                        additionalProperties: {
-                            type: "string",
-                        },
-                    },
-                    tags: {
-                        type: "array",
-                        items: {
-                            type: "string",
-                        }
-                    },
-                    documents: {
-                        type: "object",
-                        propertyNames: {
-                            pattern: "^[A-Z0-9]{3}$",
-                        },
-                        additionalProperties: {
-                            type: "object",
-                            properties: {
-                                headers: {
-                                    type: "object",
-                                    propertyNames: {
-                                        pattern: "^\\S+$",
-                                    },
-                                    additionalProperties: {
-                                        type: "string",
-                                    },
-                                },
-                                tags: {
-                                    type: "array",
-                                    items: {
-                                        type: "string",
-                                    },
-                                },
-                                sequences: {
-                                    type: "object",
-                                    propertyNames: {
-                                        pattern: "^\\S+$",
-                                    },
-                                    additionalProperties: {
-                                        "$ref": "#/$defs/sequence",
-                                    },
-                                },
-                                mainSequence: {type: "string"},
-                            },
-                            required: ["headers", "tags", "sequences", "mainSequence"],
-                        },
-                    }
-                },
-                required: ["selectors", "tags", "documents"],
-            },
+            additionalProperties: {"$ref": "#/$defs/docSet"},
         },
     },
     required: ['docSets'],

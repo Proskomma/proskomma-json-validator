@@ -1,2 +1,2 @@
-# proskomma-render-perf
-A Proskomma renderer to produce Proskomma Editor-Ready Format JSON (PERF)
+# proskomma-json-validator
+A JSON Schema Validator for Proskomma data

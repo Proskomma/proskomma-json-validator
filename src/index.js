@@ -15,7 +15,11 @@ class ProskommaJsonValidator {
             throw new Error(`Unknown schema key '${schemaKey}'`)
         }
         const validator = new Ajv().compile(this.schema[schemaKey]);
-        return validator(data);
+        return {
+            schemaKey,
+            isValid: validator(data),
+            errors: validator.errors,
+        };
     }
 
 

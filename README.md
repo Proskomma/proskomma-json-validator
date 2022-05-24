@@ -1,22 +1,31 @@
 # proskomma-json-validator
 A JSON Schema Validator for Proskomma data
 
+## Usage
 ```
 import ProskommaJsonValidator from 'proskomma-json-validator;
-const validatorResult = validator.validate('perf', {});
+const validatorResult = validator.validate('sequencePerf', {});
 /*
-{
-  schemaKey: 'perf',
-  isValid: false,
-  errors: [
+=>
     {
-      instancePath: '',
-      schemaPath: '#/required',
-      keyword: 'required',
-      params: [Object],
-      message: "must have required property 'docSets'"
+      "schemaKey": "sequencePerf",
+      "isValid": false,
+      "errors": [
+        {
+          "instancePath": "",
+          "schemaPath": "#/then/allOf/0/required",
+          "keyword": "required",
+          "params": {
+            "missingProperty": "blocks"
+          },
+          "message": "must have required property 'blocks'"
+        }
+      ]
     }
-  ]
-}
 */
 ```
+## Supported Schema
+- docSetsPerf
+- docSetPerf
+- documentPerf
+- sequencePerf

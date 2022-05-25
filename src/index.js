@@ -3,6 +3,8 @@ import docSetsSchema from './schema/docSetsSchema.json';
 import docSetSchema from './schema/docSetSchema.json';
 import documentSchema from './schema/documentSchema.json';
 import sequenceSchema from './schema/sequenceSchema.json';
+import blockOrGraftSchema from './schema/blockOrGraftSchema.json';
+import contentElementSchema from './schema/contentElementSchema.json';
 
 class ProskommaJsonValidator {
 
@@ -12,6 +14,8 @@ class ProskommaJsonValidator {
             [
                 'docSetsPerf',
                 new Ajv()
+                    .addSchema(contentElementSchema)
+                    .addSchema(blockOrGraftSchema)
                     .addSchema(sequenceSchema)
                     .addSchema(documentSchema)
                     .addSchema(docSetSchema)
@@ -20,6 +24,8 @@ class ProskommaJsonValidator {
             [
                 'docSetPerf',
                 new Ajv()
+                    .addSchema(contentElementSchema)
+                    .addSchema(blockOrGraftSchema)
                     .addSchema(sequenceSchema)
                     .addSchema(documentSchema)
                     .compile(docSetSchema)
@@ -27,12 +33,16 @@ class ProskommaJsonValidator {
             [
                 'documentPerf',
                 new Ajv()
+                    .addSchema(contentElementSchema)
+                    .addSchema(blockOrGraftSchema)
                     .addSchema(sequenceSchema)
                     .compile(documentSchema)
             ],
             [
                 'sequencePerf',
                 new Ajv()
+                    .addSchema(contentElementSchema)
+                    .addSchema(blockOrGraftSchema)
                     .compile(sequenceSchema)
             ],
         ]) {

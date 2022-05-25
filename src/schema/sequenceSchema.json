@@ -1,111 +1,6 @@
 {
   "$id": "https://github.com/Proskomma/proskomma-json-validator/tree/main/src/schema/sequenceSchema.json",
 
-  "$defs": {
-    "contentElement": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "number": {
-          "type": "string"
-        },
-        "subType": {
-          "type": "string",
-          "enum": [
-            "verses",
-            "xref",
-            "footnote",
-            "noteCaller"
-          ]
-        },
-        "target": {
-          "type": "string"
-        },
-        "nBlocks": {
-          "type": "integer"
-        },
-        "previewText": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "type"
-      ],
-      "additionalProperties": false
-    },
-    "blockOrGraft": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "block",
-              "graft"
-            ]
-          },
-          "subType": {
-            "type": "string"
-          },
-          "target": {
-            "type": "string"
-          },
-          "nBlocks": {
-            "type": "integer"
-          },
-          "previewText": {
-            "type": "string"
-          },
-          "firstBlockScope": {
-            "type": "string"
-          },
-          "content": {
-            "type": "array",
-            "items": {
-              "oneOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "$ref": "#/$defs/contentElement"
-                }
-              ]
-            }
-          }
-        },
-        "required": [
-          "type",
-          "subType"
-        ],
-        "additionalProperties": false,
-        "if": {
-          "properties": {
-            "type": {
-              "enum": [
-                "block"
-              ]
-            }
-          }
-        },
-        "then": {
-          "required": [
-            "content"
-          ]
-        },
-        "else": {
-          "required": [
-            "target",
-            "nBlocks",
-            "previewText",
-            "firstBlockScope"
-          ]
-        }
-      }
-    }
-  },
   "type": "object",
   "properties": {
     "type": {
@@ -146,7 +41,7 @@
       "type": "boolean"
     },
     "blocks": {
-      "$ref": "#/$defs/blockOrGraft"
+      "$ref": "./blockOrGraftSchema.json"
     }
   },
   "required": [

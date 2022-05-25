@@ -1,6 +1,6 @@
 {
   "name": "proskomma-json-validator",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A JSON Schema Validator for Proskomma data",
   "main": "dist/index.js",
   "scripts": {
